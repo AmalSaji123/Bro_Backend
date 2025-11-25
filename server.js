@@ -31,8 +31,10 @@ connectDB();
 initializeSocket(httpServer);
 
 // Middleware
+// Middleware
+const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:4000').replace(/\/$/, '');
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:4000',
+  origin: frontendUrl,
   credentials: true
 }));
 app.use(express.json());
